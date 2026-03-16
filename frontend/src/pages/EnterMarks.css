@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.marks-root { max-width: 1000px; margin: 0 auto; font-family: 'DM Sans', sans-serif; }
+
+.marks-top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 22px; flex-wrap: wrap; gap: 14px;
+}
+.marks-title { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+.marks-sub { font-size: 14px; color: #94a3b8; }
+
+.view-toggle {
+  display: flex; gap: 4px;
+  background: #f1f5f9; border-radius: 10px; padding: 4px;
+}
+.view-toggle button {
+  padding: 8px 16px; border: none; border-radius: 8px;
+  font-size: 13px; font-weight: 600; font-family: inherit;
+  cursor: pointer; color: #64748b; background: none; transition: all 0.2s;
+}
+.view-toggle button.active { background: white; color: #1e293b; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+
+.marks-card {
+  background: white; border-radius: 16px;
+  border: 1px solid #e2e8f0; padding: 24px;
+  margin-bottom: 18px;
+}
+
+.marks-card-title {
+  font-family: 'Sora', sans-serif; font-size: 16px;
+  font-weight: 600; color: #1e293b; margin-bottom: 18px;
+}
+
+.marks-setup-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin-bottom: 18px;
+}
+
+.fg { display: flex; flex-direction: column; gap: 5px; }
+.fg label { font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+.fg input, .fg select {
+  padding: 10px 12px; border: 2px solid #e2e8f0;
+  border-radius: 10px; font-size: 13px; font-family: inherit;
+  color: #1e293b; outline: none; transition: border-color 0.2s;
+}
+.fg input:focus, .fg select:focus { border-color: #2563eb; }
+
+.marks-btn-primary {
+  padding: 12px 26px; background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white; border: none; border-radius: 11px;
+  font-size: 14px; font-weight: 600; font-family: 'Sora', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+}
+.marks-btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,99,235,0.3); }
+.marks-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.marks-btn-secondary {
+  padding: 12px 22px; background: #f1f5f9; color: #475569;
+  border: none; border-radius: 11px; font-size: 14px;
+  font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.2s;
+}
+.marks-btn-secondary:hover:not(:disabled) { background: #e2e8f0; }
+.marks-btn-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.marks-error {
+  padding: 12px 14px; background: #fef2f2; border: 1px solid #fecaca;
+  border-radius: 10px; font-size: 13px; color: #dc2626; margin-bottom: 14px;
+}
+.marks-success {
+  padding: 12px 14px; background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-radius: 10px; font-size: 13px; color: #15803d; margin-bottom: 14px;
+}
+
+.marks-header-row {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
+}
+
+.chip { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+.published-badge {
+  padding: 6px 14px; background: #dcfce7; color: #15803d;
+  border-radius: 20px; font-size: 12px; font-weight: 700;
+}
+
+.marks-table-wrap { overflow-x: auto; margin-bottom: 16px; max-height: 420px; overflow-y: auto; }
+
+.marks-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.marks-table th {
+  padding: 11px 12px; text-align: left; font-size: 11px;
+  font-weight: 600; color: #94a3b8; text-transform: uppercase;
+  letter-spacing: 0.5px; border-bottom: 2px solid #f1f5f9;
+  position: sticky; top: 0; background: white; z-index: 1;
+}
+.marks-table td { padding: 11px 12px; border-bottom: 1px solid #f8fafc; color: #475569; vertical-align: middle; }
+.marks-table tr:last-child td { border-bottom: none; }
+.absent-row td { background: #fef2f2 !important; opacity: 0.7; }
+.roll-cell { font-size: 11px; font-weight: 600; color: #94a3b8; }
+
+.s-avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent, #2563eb); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+
+.marks-input-wrap { display: flex; align-items: center; gap: 8px; }
+.marks-input {
+  width: 72px; padding: 7px 10px;
+  border: 2px solid #e2e8f0; border-radius: 8px;
+  font-size: 14px; font-weight: 700; font-family: inherit;
+  text-align: center; outline: none; transition: border-color 0.2s;
+}
+.marks-input:focus { border-color: #2563eb; }
+.marks-pct { font-size: 12px; font-weight: 700; min-width: 36px; }
+
+.absent-toggle {
+  padding: 6px 12px; border-radius: 8px; border: none;
+  font-size: 11px; font-weight: 600; cursor: pointer;
+  font-family: inherit; transition: all 0.15s;
+  background: #dcfce7; color: #15803d;
+}
+.absent-toggle.is-absent { background: #fef2f2; color: #dc2626; }
+.absent-toggle:hover { opacity: 0.8; }
+
+.remarks-input {
+  width: 100%; padding: 7px 10px;
+  border: 1px solid #e2e8f0; border-radius: 8px;
+  font-size: 12px; font-family: inherit; outline: none;
+}
+.remarks-input:focus { border-color: #2563eb; }
+
+.stats-row {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  padding: 14px; background: #f8fafc; border-radius: 12px;
+  margin-bottom: 16px;
+}
+.stat-pill {
+  text-align: center; flex: 1; min-width: 100px;
+}
+.stat-pill span { display: block; font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; }
+.stat-pill label { font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 600; }
+
+.marks-actions { display: flex; gap: 12px; justify-content: flex-end; padding-top: 16px; border-top: 1px solid #f1f5f9; }
+
+.cia-type-badge {
+  padding: 3px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 700;
+  background: #eff6ff; color: #1d4ed8;
+}
+
+.grade-badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+@media (max-width: 700px) {
+  .marks-setup-grid { grid-template-columns: 1fr 1fr; }
+  .marks-table { font-size: 12px; }
+}

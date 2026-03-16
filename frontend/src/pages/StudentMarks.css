@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.std-marks-root { max-width: 900px; margin: 0 auto; font-family: 'DM Sans', sans-serif; }
+
+.std-marks-header { margin-bottom: 22px; }
+.std-marks-header h1 { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+.std-marks-header p { font-size: 14px; color: #94a3b8; }
+
+.std-marks-tabs {
+  display: flex; gap: 4px;
+  border-bottom: 2px solid #e2e8f0; margin-bottom: 22px;
+}
+.std-marks-tabs button {
+  padding: 10px 18px; background: none; border: none;
+  font-size: 13px; font-weight: 600; color: #94a3b8;
+  cursor: pointer; font-family: inherit;
+  border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s;
+}
+.std-marks-tabs button:hover { color: #475569; }
+.std-marks-tabs button.active { color: var(--accent, #2563eb); border-bottom-color: var(--accent, #2563eb); }
+
+/* Summary cards */
+.marks-summary-grid {
+  display: flex; gap: 14px; margin-bottom: 22px; flex-wrap: wrap;
+}
+
+.type-summary-card {
+  flex: 1; min-width: 150px;
+  background: white; border-radius: 14px;
+  border: 1px solid #e2e8f0; padding: 18px 20px;
+  text-align: center;
+}
+
+.type-badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.type-avg { font-family: 'Sora', sans-serif; font-size: 32px; font-weight: 700; color: #1e293b; margin: 8px 0 2px; }
+.type-label { font-size: 12px; color: #94a3b8; font-weight: 500; }
+.type-count { font-size: 12px; color: #64748b; margin-top: 4px; }
+
+/* Subject marks card */
+.subject-marks-card {
+  background: white; border-radius: 14px;
+  border: 1px solid #e2e8f0; margin-bottom: 14px; overflow: hidden;
+}
+
+.smk-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid #f1f5f9; background: #f8fafc;
+}
+.smk-header h3 { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 600; color: #1e293b; margin: 0; }
+
+.smk-assessments { padding: 8px 0; }
+
+.assessment-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px; border-bottom: 1px solid #f8fafc;
+  flex-wrap: wrap; gap: 12px;
+}
+.assessment-row:last-child { border-bottom: none; }
+
+.ar-left { display: flex; align-items: center; gap: 12px; }
+.ar-type { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.ar-staff { font-size: 13px; font-weight: 600; color: #1e293b; }
+.ar-date { font-size: 11px; color: #94a3b8; }
+
+.ar-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+
+.ar-marks-display { display: flex; align-items: baseline; gap: 2px; }
+.ar-marks-val { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 700; color: #1e293b; }
+.ar-marks-max { font-size: 14px; color: #94a3b8; }
+
+.ar-pct-badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.ar-compare { font-size: 12px; color: #94a3b8; }
+.ar-absent { color: #dc2626; font-size: 13px; font-weight: 600; background: #fef2f2; padding: 6px 14px; border-radius: 20px; }
+.ar-pending { color: #d97706; font-size: 13px; font-weight: 600; background: #fef9c3; padding: 6px 14px; border-radius: 20px; }
+
+/* Assignments */
+.assignments-list { display: flex; flex-direction: column; gap: 14px; }
+
+.assignment-card {
+  background: white; border-radius: 14px;
+  border: 1px solid #e2e8f0; padding: 20px;
+  transition: box-shadow 0.2s;
+}
+.assignment-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.assignment-card.overdue { border-color: #fecaca; }
+.assignment-card.submitted { border-color: #bbf7d0; }
+
+.asgn-top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+.asgn-info { flex: 1; }
+.asgn-title { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+.asgn-meta { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: #64748b; margin-bottom: 6px; }
+.asgn-subject { font-weight: 600; }
+.asgn-desc { font-size: 13px; color: #64748b; margin: 6px 0 0; line-height: 1.5; }
+
+.asgn-status { flex-shrink: 0; }
+
+.status-badge {
+  padding: 8px 16px; border-radius: 10px;
+  font-size: 12px; font-weight: 700;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.status-badge.graded { background: #dcfce7; color: #15803d; }
+.status-badge.late { background: #fff7ed; color: #c2410c; }
+.status-badge.submitted-ok { background: #eff6ff; color: #1d4ed8; }
+.status-badge.overdue-badge { background: #fef2f2; color: #dc2626; }
+.status-badge.pending-badge { background: #f1f5f9; color: #64748b; }
+
+.grade-mark { font-size: 16px; font-weight: 800; color: #15803d; }
+
+.submission-info {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  padding: 10px 14px; background: #f8fafc;
+  border-radius: 10px; font-size: 13px;
+  color: #475569; margin-bottom: 12px;
+}
+
+.upload-section { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+.upload-btn {
+  padding: 10px 20px; border: none; border-radius: 10px;
+  font-size: 13px; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: all 0.2s;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white;
+}
+.upload-btn.reupload { background: #f1f5f9; color: #475569; }
+.upload-btn:hover:not(:disabled) { transform: translateY(-1px); }
+.upload-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.upload-hint { font-size: 12px; color: #94a3b8; }
+
+.empty-state { text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 14px; }
+.empty-state div { margin-bottom: 12px; }

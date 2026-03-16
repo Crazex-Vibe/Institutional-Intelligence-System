@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.mgmt-cia-root { max-width: 1000px; margin: 0 auto; font-family: 'DM Sans', sans-serif; }
+
+.mgmt-cia-header { margin-bottom: 22px; }
+.mgmt-cia-header h1 { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+.mgmt-cia-header p { font-size: 14px; color: #94a3b8; }
+
+.mgmt-cia-filter {
+  background: white; border-radius: 14px;
+  border: 1px solid #e2e8f0; padding: 18px 20px; margin-bottom: 20px;
+}
+
+.filter-row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+
+.fg { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 140px; }
+.fg label { font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+.fg input, .fg select {
+  padding: 10px 12px; border: 2px solid #e2e8f0; border-radius: 10px;
+  font-size: 13px; font-family: inherit; color: #1e293b; outline: none; transition: border-color 0.2s;
+}
+.fg input:focus, .fg select:focus { border-color: #2563eb; }
+
+.cia-search-btn {
+  padding: 10px 22px; height: 42px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white; border: none; border-radius: 10px;
+  font-size: 13px; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.cia-search-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(37,99,235,0.3); }
+.cia-search-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.cia-overview-stats {
+  display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 20px;
+}
+
+.cia-stat-card {
+  flex: 1; min-width: 160px;
+  background: white; border-radius: 14px;
+  border: 1px solid #e2e8f0; padding: 18px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.cia-stat-icon { font-size: 24px; }
+.cia-stat-val { font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; }
+.cia-stat-label { font-size: 12px; color: #94a3b8; font-weight: 500; text-align: center; }
+
+.cia-table-card {
+  background: white; border-radius: 14px;
+  border: 1px solid #e2e8f0; padding: 22px; overflow-x: auto;
+}
+
+.cia-table-title {
+  font-family: 'Sora', sans-serif; font-size: 16px;
+  font-weight: 600; color: #1e293b; margin-bottom: 18px;
+}
+
+.cia-summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.cia-summary-table th {
+  padding: 11px 12px; text-align: left;
+  font-size: 11px; font-weight: 600; color: #94a3b8;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  border-bottom: 2px solid #f1f5f9;
+}
+.cia-summary-table td { padding: 13px 12px; border-bottom: 1px solid #f8fafc; color: #475569; }
+.cia-summary-table tr:last-child td { border-bottom: none; }
+.cia-summary-table tr:hover td { background: #f8fafc; }
+
+.cia-type-chip { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+.status-chip { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+.empty-state { text-align: center; padding: 50px 20px; color: #94a3b8; font-size: 14px; }
