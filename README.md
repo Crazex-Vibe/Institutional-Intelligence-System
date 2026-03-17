@@ -302,10 +302,15 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👨‍💻 Built By
 
 **Anand Balaji F S** — [GitHub](https://github.com/Crazex-Vibe)
+
 **Aswin V** - [GitHub](https://github.com/Ash-ady-exe)
+
 **Naresh R** - [GitHub](https://github.com/Nas-ax)
+
 **Ajmal Ghouse D** - [GitHub](https://github.com/ajmalx1234-dev)
+
 **Nagaraj K** - [GitHub](https://github.com/nagaraj2327)
+
 **Jayaprakash K** - [Github](https://github.com/jp-006)
 
 > Built with ❤️ for engineering college academic management
