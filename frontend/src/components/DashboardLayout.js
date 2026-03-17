@@ -27,7 +27,8 @@ const NAV_ITEMS = {
     { path: '/management/staff', icon: '👩‍🏫', label: 'Staff' },
     { path: '/management/attendance', icon: '📅', label: 'Attendance Overview' },
     { path: '/management/classes', icon: '🏫', label: 'Class Tracking' },
-    { path: '/management/reports', icon: '📊', label: 'Reports' },
+    { path: '/management/analytics', icon: '📊', label: 'Analytics & Reports' },
+//    { path: '/management/reports', icon: '📊', label: 'Reports' },
     { path: '/management/users', icon: '⚙️', label: 'Manage Users' },
   ],
 };
