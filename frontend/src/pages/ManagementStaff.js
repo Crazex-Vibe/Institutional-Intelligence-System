@@ -3,7 +3,7 @@ import DashboardLayout from '../components/DashboardLayout';
 import API from '../utils/api';
 import './ManagementStaff.css';
 
-const DEPARTMENTS = ['','AI&DS', 'Computer Science', 'Electronics', 'Mechanical', 'Civil', 'Electrical', 'IT'];
+const DEPARTMENTS = ['', 'AI&DS', 'Computer Science', 'Information Technology', 'Electronics', 'Electrical', 'Mechanical', 'Civil'];
 
 export default function ManagementStaff() {
   const [staff, setStaff] = useState([]);

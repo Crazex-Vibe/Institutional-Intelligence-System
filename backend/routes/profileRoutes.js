@@ -12,8 +12,10 @@ const {
   getAllStudents,
 } = require('../controllers/profileController');
 
-// Student
+// Student — /me and /my both work
+router.get('/me', protect, authorize('student'), getMyProfile);
 router.get('/my', protect, authorize('student'), getMyProfile);
+
 router.post('/achievement', protect, authorize('student', 'management'), addAchievement);
 router.delete('/achievement/:achievementId', protect, authorize('student', 'management'), deleteAchievement);
 

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.sr-root { max-width: 900px; margin: 0 auto; font-family: 'DM Sans', sans-serif; }
+.sr-loading { text-align: center; padding: 80px; color: #94a3b8; font-size: 15px; }
+.sr-header { margin-bottom: 22px; }
+.sr-header h1 { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+.sr-header p { font-size: 14px; color: #94a3b8; }
+
+/* Stats */
+.sr-stats { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+.sr-stat-card {
+  flex: 1; min-width: 150px; background: white;
+  border-radius: 14px; border: 1px solid #e2e8f0;
+  padding: 18px; display: flex; flex-direction: column;
+  align-items: center; gap: 4px; text-align: center;
+}
+.src-icon { font-size: 24px; }
+.src-val { font-family: 'Sora', sans-serif; font-size: 30px; font-weight: 800; }
+.src-label { font-size: 13px; font-weight: 600; color: #1e293b; }
+.src-sub { font-size: 11px; color: #94a3b8; }
+
+/* Card */
+.sr-card { background: white; border-radius: 14px; border: 1px solid #e2e8f0; padding: 22px; margin-bottom: 18px; }
+.sr-card-title { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 18px; }
+.sr-empty { text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; }
+
+/* SGPA Chart */
+.sgpa-chart { display: flex; align-items: flex-end; gap: 16px; height: 160px; padding: 0 8px; margin-bottom: 12px; }
+.sgpa-col { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
+.sgpa-val { font-size: 11px; font-weight: 700; color: #475569; }
+.sgpa-bar { width: 100%; border-radius: 6px 6px 0 0; min-height: 8px; transition: height 0.4s; }
+.sgpa-sem { font-size: 11px; color: #94a3b8; font-weight: 600; }
+.sgpa-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #64748b; }
+.sgpa-leg-item { display: flex; align-items: center; gap: 5px; }
+.sgpa-leg-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+/* Semester blocks */
+.sem-block { border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+.sem-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; cursor: pointer; background: #f8fafc;
+  transition: background 0.15s; flex-wrap: wrap; gap: 8px;
+}
+.sem-header:hover { background: #f1f5f9; }
+.sem-header.open { background: #eff6ff; }
+.sem-header-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sem-num { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: #1e293b; }
+.sem-year { font-size: 12px; color: #94a3b8; }
+.sem-badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.sem-badge.ongoing { background: #fef3c7; color: #d97706; }
+.sem-header-right { display: flex; align-items: center; gap: 10px; }
+.sem-sgpa-pill { padding: 4px 12px; background: #dbeafe; color: #1d4ed8; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.sem-credits-pill { padding: 4px 12px; background: #f3e8ff; color: #7c3aed; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.sem-arrow { font-size: 11px; color: #94a3b8; }
+
+.sem-body { padding: 16px 18px; }
+.sem-pending { text-align: center; padding: 20px; color: #94a3b8; font-size: 13px; }
+
+/* Results table */
+.results-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.results-table th { padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #f1f5f9; }
+.results-table td { padding: 11px 12px; border-bottom: 1px solid #f8fafc; color: #475569; }
+.results-table tr:last-child td { border-bottom: none; }
+.arrear-row td { background: #fff5f5; }
+.subj-name { font-weight: 600; color: #1e293b; }
+.grade-chip { padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.status-chip { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.tfoot-row td { padding: 12px; background: #f8fafc; border-top: 2px solid #e2e8f0; }

@@ -9,15 +9,20 @@ const MIN_ATTENDANCE = 75;
 const getClassStudents = async (req, res) => {
   try {
     const { department, semester, section } = req.query;
+ 
+    if (!department || !semester || !section) {
+      return res.status(400).json({ success: false, message: 'Department, semester and section are required' });
+    }
+ 
     const students = await User.find({
       role: 'student',
-      'studentProfile.department': department,
-      'studentProfile.semester': Number(semester),
-      'studentProfile.section': section,
+      'studentProfile.department': { $regex: new RegExp(`^${department}$`, 'i') }, // case-insensitive match
+      'studentProfile.semester': Number(semester), // always cast to number
+      'studentProfile.section': { $regex: new RegExp(`^${section}$`, 'i') }, // case-insensitive match
       isActive: true,
-    }).select('name studentProfile.rollNumber studentProfile.umisId');
-
-    res.json({ success: true, students });
+    }).select('name studentProfile');
+ 
+    res.json({ success: true, students, count: students.length });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }

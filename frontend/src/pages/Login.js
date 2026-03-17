@@ -28,6 +28,7 @@ export default function LoginPage() {
 
   const from = location.state?.from?.pathname;
 
+  // Only fills demo credentials — does NOT block new users from typing their own
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
     setFormData(DEMO_CREDS[role]);
@@ -35,6 +36,8 @@ export default function LoginPage() {
   };
 
   const handleChange = (e) => {
+    // When user types manually, deselect the role highlight
+    setSelectedRole(null);
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError('');
   };
@@ -48,7 +51,7 @@ export default function LoginPage() {
     setLoading(true);
     setError('');
     try {
-      const user = await login(formData.email, formData.password);
+      const user = await login(formData.email.trim().toLowerCase(), formData.password);
       const dashboardMap = {
         student: '/student/dashboard',
         staff: '/staff/dashboard',
@@ -56,7 +59,7 @@ export default function LoginPage() {
       };
       navigate(from || dashboardMap[user.role], { replace: true });
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please try again.');
+      setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
     } finally {
       setLoading(false);
     }
@@ -108,9 +111,9 @@ export default function LoginPage() {
               <p>Sign in to your account to continue</p>
             </div>
 
-            {/* Quick role selector */}
+            {/* Quick role selector — only for demo accounts */}
             <div className="role-selector">
-              <p className="role-label">Quick Login As:</p>
+              <p className="role-label">Demo Quick Login:</p>
               <div className="role-buttons">
                 {['student', 'staff', 'management'].map((role) => (
                   <button
@@ -145,7 +148,12 @@ export default function LoginPage() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">
+                  Password
+                  <span className="password-hint">
+                    (New users: password = roll number / employee ID)
+                  </span>
+                </label>
                 <div className="input-wrapper">
                   <span className="input-icon">🔒</span>
                   <input
@@ -184,9 +192,8 @@ export default function LoginPage() {
               </button>
             </form>
 
-            {/* Demo info */}
             <div className="demo-hint">
-              <span>💡</span> Click a role above to auto-fill demo credentials
+              <span>💡</span> New users: use your college email and roll number as password
             </div>
           </div>
         </div>

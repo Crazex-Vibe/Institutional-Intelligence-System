@@ -13,11 +13,12 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401 globally
+// Handle 401 globally — but NOT for /auth/me (that's just a token check)
 API.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    const isAuthMe = error.config?.url?.includes('/auth/me');
+    if (error.response?.status === 401 && !isAuthMe) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';

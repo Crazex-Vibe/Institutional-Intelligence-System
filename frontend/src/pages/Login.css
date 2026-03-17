@@ -396,3 +396,9 @@ body { font-family: 'DM Sans', sans-serif; }
   .login-right { padding: 24px; }
   .college-brand h1 { font-size: 26px; }
 }
+.password-hint {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 400;
+  margin-left: 6px;
+}

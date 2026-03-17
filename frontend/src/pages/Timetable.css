@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.tt-root { max-width: 1000px; margin: 0 auto; font-family: 'DM Sans', sans-serif; }
+.tt-loading { text-align: center; padding: 80px; color: #94a3b8; }
+.tt-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; flex-wrap: wrap; gap: 12px; }
+.tt-header h1 { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+.tt-header p { font-size: 14px; color: #94a3b8; }
+.tt-today-badge { padding: 8px 18px; background: #eff6ff; color: #2563eb; border-radius: 20px; font-size: 13px; font-weight: 600; }
+.tt-section-title { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 16px; }
+
+.tt-no-data { text-align: center; padding: 80px 20px; color: #94a3b8; font-size: 14px; background: white; border-radius: 14px; border: 1px solid #e2e8f0; }
+
+/* Today card */
+.tt-today-card { background: white; border-radius: 14px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 18px; }
+.tt-today-list { display: flex; flex-direction: column; gap: 8px; }
+.tt-today-item { display: flex; align-items: center; gap: 12px; }
+.tti-time { font-size: 11px; color: #94a3b8; font-weight: 600; min-width: 90px; }
+.tti-hour { font-size: 11px; font-weight: 700; color: #cbd5e1; min-width: 32px; }
+.tti-subject { flex: 1; padding: 10px 14px; border-radius: 8px; }
+.tti-subj-name { font-size: 13px; font-weight: 700; }
+.tti-staff { font-size: 11px; opacity: 0.8; margin-top: 2px; }
+.tti-room { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+.tt-break-row { padding: 6px 0 6px 134px; font-size: 11px; color: #94a3b8; font-style: italic; }
+
+/* Weekly grid */
+.tt-card { background: white; border-radius: 14px; border: 1px solid #e2e8f0; padding: 20px; }
+.tt-grid-wrap { overflow-x: auto; margin-bottom: 16px; }
+.tt-grid { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 700px; }
+
+.tt-grid th {
+  padding: 10px 8px; text-align: center; font-size: 11px;
+  font-weight: 600; color: #94a3b8; text-transform: uppercase;
+  letter-spacing: 0.5px; border-bottom: 2px solid #f1f5f9;
+  background: #f8fafc;
+}
+.tt-day-col { width: 70px; text-align: left !important; padding-left: 12px !important; }
+.tt-hour-time { font-size: 10px; font-weight: 400; color: #cbd5e1; margin-top: 2px; text-transform: none; letter-spacing: 0; }
+.after-break { border-left: 2px dashed #e2e8f0; }
+
+.tt-grid td { padding: 6px; border-bottom: 1px solid #f8fafc; vertical-align: middle; }
+.tt-grid tr:last-child td { border-bottom: none; }
+.today-row td { background: #fafbff; }
+.today-row .tt-day-cell { background: #eff6ff; }
+
+.tt-day-cell { padding: 8px 12px !important; }
+.tt-day-name { font-size: 12px; font-weight: 700; color: #1e293b; }
+.tt-today-dot { font-size: 10px; color: #2563eb; font-weight: 600; margin-top: 2px; }
+
+.tt-empty-cell { text-align: center; color: #e2e8f0; font-size: 12px; }
+.tt-subject-cell { padding: 4px !important; }
+.tt-cell-inner { padding: 6px 8px; border-radius: 6px; }
+.tt-cell-subj { font-size: 11px; font-weight: 700; }
+.tt-cell-room { font-size: 10px; opacity: 0.7; margin-top: 2px; }
+
+/* Legend */
+.tt-legend { display: flex; flex-wrap: wrap; gap: 8px; }
+.tt-legend-item { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; }

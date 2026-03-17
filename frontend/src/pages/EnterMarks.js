@@ -1,3 +1,4 @@
+import { DEPARTMENTS } from './../utils/departments';
 import { useState, useEffect } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 import API from '../utils/api';

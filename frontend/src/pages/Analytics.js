@@ -1,3 +1,4 @@
+import { DEPARTMENTS } from './../utils/departments';
 import { useState } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 import API from '../utils/api';
@@ -81,7 +82,7 @@ export default function Analytics() {
         {/* Filter bar */}
         <div className="analytics-filter">
           <div className="filter-row">
-            <div className="fg"><label>Department</label><input value={filters.department} onChange={e => setFilters({...filters, department: e.target.value})} /></div>
+            <div className="fg"><label>Department</label><select value={filters.department} onChange={e => setFilters({...filters, department: e.target.value})}>{DEPARTMENTS.map(d => <option key={d} value={d}>{d}</option>)}</select></div>
             <div className="fg"><label>Semester</label>
               <select value={filters.semester} onChange={e => setFilters({...filters, semester: e.target.value})}>
                 {[1,2,3,4,5,6,7,8].map(s => <option key={s} value={s}>Semester {s}</option>)}

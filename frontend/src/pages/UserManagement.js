@@ -3,7 +3,7 @@ import DashboardLayout from '../components/DashboardLayout';
 import API from '../utils/api';
 import './UserManagement.css';
 
-const DEPARTMENTS = ['Artifial Intelligence and Data Science','Computer Science', 'Electronics', 'Mechanical', 'Civil', 'Electrical', 'IT'];
+const DEPARTMENTS = ['AI&DS', 'Computer Science', 'Information Technology', 'Electronics', 'Electrical', 'Mechanical', 'Civil'];
 const DESIGNATIONS = ['Assistant Professor', 'Associate Professor', 'Professor', 'HOD', 'Lab Instructor'];
 
 const defaultStudent = { name: '', department: 'Computer Science', semester: '1', section: 'A', batch: '2022-2026', rollNumber: '', parentEmail: '', phone: '' };

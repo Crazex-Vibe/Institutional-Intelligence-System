@@ -3,6 +3,11 @@ import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute, PublicOnlyRoute } from './components/ProtectedRoute';
 
 // Pages
+import StudentResults from './pages/StudentResults';
+import StudentFees from './pages/StudentFees';
+import Timetable from './pages/Timetable';
+import StaffReports from './pages/StaffReports';
+import ManagementAttendance from './pages/ManagementAttendance';
 import ManagementStaff from './pages/ManagementStaff';
 import UserManagement from './pages/UserManagement';
 import StaffDirectory from './pages/StaffDirectory';
@@ -49,13 +54,13 @@ function App() {
             <ProtectedRoute allowedRoles={['student']}><StudentMarks /></ProtectedRoute>
           } />
           <Route path="/student/results" element={
-            <ProtectedRoute allowedRoles={['student']}><ComingSoon title="Results & GPA" icon="📊" /></ProtectedRoute>
+            <ProtectedRoute allowedRoles={['student']}><StudentResults /></ProtectedRoute>
           } />
           <Route path="/student/timetable" element={
-            <ProtectedRoute allowedRoles={['student']}><ComingSoon title="Timetable" icon="🕐" /></ProtectedRoute>
+            <ProtectedRoute allowedRoles={['student']}><Timetable /></ProtectedRoute>
           } />
           <Route path="/student/fees" element={
-            <ProtectedRoute allowedRoles={['student']}><ComingSoon title="Fee Status" icon="💳" /></ProtectedRoute>
+            <ProtectedRoute allowedRoles={['student']}><StudentFees /></ProtectedRoute>
           } />
 
           {/* Staff routes */}
@@ -72,10 +77,10 @@ function App() {
             <ProtectedRoute allowedRoles={['staff']}><EnterMarks /></ProtectedRoute>
           } />
           <Route path="/staff/timetable" element={
-            <ProtectedRoute allowedRoles={['staff']}><ComingSoon title="My Timetable" icon="🕐" /></ProtectedRoute>
+            <ProtectedRoute allowedRoles={['staff']}><Timetable staffView={true} /></ProtectedRoute>
           } />
           <Route path="/staff/reports" element={
-            <ProtectedRoute allowedRoles={['staff']}><ComingSoon title="Reports" icon="📊" /></ProtectedRoute>
+            <ProtectedRoute allowedRoles={['staff']}><StaffReports /></ProtectedRoute>
           } />
           <Route path="/staff/directory" element={
             <ProtectedRoute allowedRoles={['staff']}><StaffDirectory /></ProtectedRoute>
@@ -98,7 +103,7 @@ function App() {
             <ProtectedRoute allowedRoles={['management']}><AttendanceOverview /></ProtectedRoute>
           } />
           <Route path="/management/classes" element={
-            <ProtectedRoute allowedRoles={['management']}><ComingSoon title="Class Tracking" icon="🏫" /></ProtectedRoute>
+            <ProtectedRoute allowedRoles={['management']}><ManagementAttendance /></ProtectedRoute>
           } />
           <Route path="/management/reports" element={
             <ProtectedRoute allowedRoles={['management']}><ManagementCIA /></ProtectedRoute>

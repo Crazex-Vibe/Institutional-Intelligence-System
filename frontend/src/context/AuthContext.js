@@ -7,30 +7,46 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Load user from localStorage on mount
   useEffect(() => {
     const initAuth = async () => {
       const token = localStorage.getItem('token');
       const storedUser = localStorage.getItem('user');
+
       if (token && storedUser) {
         try {
-          setUser(JSON.parse(storedUser));
-          // Verify token is still valid
+          // Set stored user immediately so app doesn't flash login
+          const parsed = JSON.parse(storedUser);
+          setUser(parsed);
+
+          // Verify token is still valid in background
           const res = await authAPI.getMe();
-          setUser(res.data.user);
-          localStorage.setItem('user', JSON.stringify(res.data.user));
+          if (res.data?.user) {
+            setUser(res.data.user);
+            localStorage.setItem('user', JSON.stringify(res.data.user));
+          }
         } catch {
-          logout();
+          // getMe failed — but keep the stored user if token exists
+          // Only logout if the token itself is missing
+          const stillHasToken = localStorage.getItem('token');
+          if (!stillHasToken) {
+            logout();
+          }
         }
       }
       setLoading(false);
     };
+
     initAuth();
   }, []);
 
   const login = async (email, password) => {
     const res = await authAPI.login({ email, password });
     const { token, user: userData } = res.data;
+
+    if (!token || !userData) {
+      throw new Error('Invalid response from server');
+    }
+
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
@@ -43,7 +59,6 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   }, []);
 
-  // Role helpers
   const isStudent = user?.role === 'student';
   const isStaff = user?.role === 'staff';
   const isManagement = user?.role === 'management';
