@@ -51,13 +51,13 @@ const baseTemplate = (content) => `
 <body>
   <div class="wrapper">
     <div class="header">
-      <h1>🏛️ EduManage</h1>
+      <h1>🏛️ Campusflow</h1>
       <p>Integrated Academic Management System</p>
     </div>
     <div class="body">${content}</div>
     <div class="footer">
-      This is an automated email from EduManage. Please do not reply to this email.<br>
-      © ${new Date().getFullYear()} EduManage — College Management System
+      This is an automated email from Campusflow. Please do not reply to this email.<br>
+      © ${new Date().getFullYear()} Campusflow — Institutional Intelligence System
     </div>
   </div>
 </body>

@@ -67,7 +67,7 @@ export default function DashboardLayout({ children }) {
             <span className="brand-logo">🏛️</span>
             {sidebarOpen && (
               <div>
-                <div className="brand-name">EduManage</div>
+                <div className="brand-name">Campusflow</div>
                 <div className="brand-role">{roleLabel}</div>
               </div>
             )}

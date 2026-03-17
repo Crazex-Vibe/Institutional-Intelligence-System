@@ -33,8 +33,8 @@ app.get('/api/test-email', async (req, res) => {
     const { sendEmail } = require('./services/emailService');
     await sendEmail({
       to: 'anandbalaji.aids23@mamcet.com',
-      subject: 'EduManage Test Email',
-      html: '<h1>✅ Email is working!</h1><p>EduManage email service is configured correctly.</p>'
+      subject: 'Campusflow Test Email',
+      html: '<h1>✅ Email is working!</h1><p>Campusflow email service is configured correctly.</p>'
     });
     res.json({ success: true, message: 'Email sent! Check your inbox.' });
   } catch (err) {

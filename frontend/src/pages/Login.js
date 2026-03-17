@@ -79,8 +79,8 @@ export default function LoginPage() {
         <div className="login-left">
           <div className="college-brand">
             <div className="brand-icon">🏛️</div>
-            <h1>EduManage</h1>
-            <p className="brand-tagline">Integrated Academic Management System</p>
+            <h1>Campusflow</h1>
+            <p className="brand-tagline">Institutional Intelligence System</p>
           </div>
 
           <div className="features-list">
