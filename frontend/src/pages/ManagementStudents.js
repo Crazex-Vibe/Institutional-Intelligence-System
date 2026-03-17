@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 import API from '../utils/api';
+import { DEPARTMENTS } from '../utils/departments';
 import './StudentsList.css';
 
 const GRADE_COLORS = {
@@ -14,7 +15,7 @@ const GRADE_COLORS = {
 const TABS = ['Overview', 'Results', 'Fees', 'Achievements'];
 
 export default function ManagementStudents() {
-  const [filters, setFilters] = useState({ department: 'Computer Science', semester: '', section: '' });
+  const [filters, setFilters] = useState({ department: '', semester: '', section: '' });
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState(null);
@@ -81,7 +82,10 @@ export default function ManagementStudents() {
           <div className="filters-row">
             <div className="filter-group">
               <label>Department</label>
-              <input value={filters.department} onChange={e => setFilters({...filters, department: e.target.value})} placeholder="All departments" />
+              <select value={filters.department} onChange={e => setFilters({...filters, department: e.target.value})}>
+                <option value="">All Departments</option>
+                {DEPARTMENTS.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
             </div>
             <div className="filter-group">
               <label>Semester</label>

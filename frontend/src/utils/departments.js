@@ -1,13 +1,9 @@
-// src/utils/departments.js
-// Single source of truth for all departments
-// Import this in any file that needs a department dropdown
-
 export const DEPARTMENTS = [
   'AI&DS',
   'Computer Science',
   'Information Technology',
-  'Electronics',
-  'Electrical',
+  'EEE',
+  'ECE',
   'Mechanical',
   'Civil',
 ];

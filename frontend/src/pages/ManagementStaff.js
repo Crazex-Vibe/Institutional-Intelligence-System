@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 import API from '../utils/api';
+import { DEPARTMENTS } from '../utils/departments';
 import './ManagementStaff.css';
-
-const DEPARTMENTS = ['', 'AI&DS', 'Computer Science', 'Information Technology', 'Electronics', 'Electrical', 'Mechanical', 'Civil'];
 
 export default function ManagementStaff() {
   const [staff, setStaff] = useState([]);
@@ -75,7 +74,7 @@ export default function ManagementStaff() {
           />
           <select className="ms-dept" value={filterDept} onChange={e => setFilterDept(e.target.value)}>
             <option value="">All Departments</option>
-            {DEPARTMENTS.filter(Boolean).map(d => <option key={d} value={d}>{d}</option>)}
+            {DEPARTMENTS.map(d => <option key={d} value={d}>{d}</option>)}
           </select>
         </div>
 
