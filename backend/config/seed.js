@@ -22,7 +22,7 @@ const seedUsers = [
     role: 'staff',
     staffProfile: {
       staffId: 'STF001',
-      department: 'Aritifial Intelligence and Data Science',
+      department: 'AI&DS',
       designation: 'Associate Professor',
       subjects: ['Data Structures', 'Algorithms', 'DBMS'],
     },
@@ -36,7 +36,7 @@ const seedUsers = [
       rollNumber: '812023243008',
       umisId: 'UMIS2021001',
       emisId: 'EMIS2021001',
-      department: 'Artificial Intelligence and Data Science',
+      department: 'AI&DS',
       semester: 6,
       section: 'A',
       batch: '2023-2027',
