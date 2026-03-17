@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const AcademicProfile = require('../models/AcademicProfile');
 const Attendance = require('../models/Attendance');
+const SubjectAttendance = require('../models/SubjectAttendance');
 const CIA = require('../models/CIA');
 const {
   sendCIASummaryEmail,
@@ -238,43 +239,38 @@ const getAnalytics = async (req, res) => {
   try {
     const { department, semester, section } = req.query;
 
+    // Get all students in this class
     const students = await User.find({
       role: 'student',
-      'studentProfile.department': department,
+      'studentProfile.department': { $regex: new RegExp(`^${department}$`, 'i') },
       'studentProfile.semester': Number(semester),
-      'studentProfile.section': section,
+      'studentProfile.section': { $regex: new RegExp(`^${section}$`, 'i') },
     });
 
-    const allRecords = await Attendance.find({ department, semester: Number(semester), section });
-
-    // Daily attendance trend (last 30 days)
-    const last30Days = [];
-    for (let i = 29; i >= 0; i--) {
-      const d = new Date();
-      d.setDate(d.getDate() - i);
-      d.setHours(0, 0, 0, 0);
-      const dayRecords = allRecords.filter(r => r.date.toDateString() === d.toDateString());
-      if (dayRecords.length > 0) {
-        const totalSlots = dayRecords.length * students.length;
-        const presentSlots = dayRecords.reduce((sum, r) => {
-          return sum + r.records.filter(rec => rec.status === 'present' || rec.status === 'od').length;
-        }, 0);
-        last30Days.push({
-          date: d.toISOString().split('T')[0],
-          percentage: totalSlots > 0 ? Math.round((presentSlots / totalSlots) * 100) : 0,
-          totalClasses: dayRecords.length,
-        });
-      }
+    if (students.length === 0) {
+      return res.json({
+        success: true,
+        summary: { totalStudents: 0, lowAttendanceCount: 0, classAvgAttendance: 0, totalClassesConducted: 0 },
+        studentStats: [],
+        subjectStats: [],
+        attendanceTrend: [],
+      });
     }
 
-    // Per-student summary
+    const studentIds = students.map(s => s._id);
+
+    // Use SubjectAttendance — this is what attendanceController populates
+    const subjectAttendanceRecords = await SubjectAttendance.find({
+      student: { $in: studentIds },
+    });
+
+    // Per-student summary using SubjectAttendance
     const studentStats = students.map(student => {
-      let totalHours = 0, attendedHours = 0;
-      for (const record of allRecords) {
-        totalHours++;
-        const sr = record.records.find(r => r.studentId.toString() === student._id.toString());
-        if (sr && (sr.status === 'present' || sr.status === 'od')) attendedHours++;
-      }
+      const myRecords = subjectAttendanceRecords.filter(
+        r => r.student.toString() === student._id.toString()
+      );
+      const totalHours = myRecords.reduce((s, r) => s + (r.totalClasses || 0), 0);
+      const attendedHours = myRecords.reduce((s, r) => s + (r.attendedClasses || 0), 0);
       const percentage = totalHours > 0 ? Math.round((attendedHours / totalHours) * 100) : 0;
       return {
         name: student.name,
@@ -286,19 +282,51 @@ const getAnalytics = async (req, res) => {
       };
     });
 
-    // Subject-wise class average
+    // Subject-wise average using SubjectAttendance
     const subjectMap = {};
-    for (const record of allRecords) {
-      if (!subjectMap[record.subject]) subjectMap[record.subject] = { total: 0, present: 0, classes: 0 };
-      subjectMap[record.subject].classes++;
-      subjectMap[record.subject].total += record.totalStudents;
-      subjectMap[record.subject].present += record.presentCount;
+    for (const r of subjectAttendanceRecords) {
+      if (!subjectMap[r.subject]) subjectMap[r.subject] = { totalClasses: 0, attendedClasses: 0, studentCount: 0 };
+      subjectMap[r.subject].totalClasses += r.totalClasses || 0;
+      subjectMap[r.subject].attendedClasses += r.attendedClasses || 0;
+      subjectMap[r.subject].studentCount++;
     }
     const subjectStats = Object.entries(subjectMap).map(([subject, data]) => ({
       subject,
-      avgAttendance: data.total > 0 ? Math.round((data.present / data.total) * 100) : 0,
-      totalClasses: data.classes,
+      avgAttendance: data.totalClasses > 0
+        ? Math.round((data.attendedClasses / data.totalClasses) * 100)
+        : 0,
+      totalClasses: data.studentCount > 0
+        ? Math.round(data.totalClasses / data.studentCount)
+        : 0,
     })).sort((a, b) => b.avgAttendance - a.avgAttendance);
+
+    // Daily attendance trend using Attendance model (day records)
+    const allDayRecords = await Attendance.find({
+      department: { $regex: new RegExp(`^${department}$`, 'i') },
+      semester: Number(semester),
+      section: { $regex: new RegExp(`^${section}$`, 'i') },
+    }).sort({ date: -1 }).limit(300);
+
+    const last30Days = [];
+    const seenDates = new Set();
+    for (const record of allDayRecords) {
+      const dateStr = record.date.toDateString();
+      if (!seenDates.has(dateStr)) {
+        seenDates.add(dateStr);
+        // count present hours across all students for this day
+        const presentCount = record.hours?.filter(
+          h => h.status === 'present' || h.status === 'od'
+        ).length || 0;
+        const totalCount = record.hours?.length || 0;
+        last30Days.push({
+          date: record.date.toISOString().split('T')[0],
+          percentage: totalCount > 0 ? Math.round((presentCount / totalCount) * 100) : 0,
+          totalClasses: totalCount,
+        });
+      }
+      if (seenDates.size >= 30) break;
+    }
+    last30Days.reverse();
 
     const summary = {
       totalStudents: students.length,
@@ -306,7 +334,7 @@ const getAnalytics = async (req, res) => {
       classAvgAttendance: studentStats.length > 0
         ? Math.round(studentStats.reduce((s, st) => s + st.percentage, 0) / studentStats.length)
         : 0,
-      totalClassesConducted: [...new Set(allRecords.map(r => r.date.toDateString()))].length,
+      totalClassesConducted: seenDates.size,
     };
 
     res.json({ success: true, summary, studentStats, subjectStats, attendanceTrend: last30Days });
